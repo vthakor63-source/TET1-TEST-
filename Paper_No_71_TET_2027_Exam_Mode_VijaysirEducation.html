@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper No - 71 | TET 1 / 2 Exam 2027 (Exam Mode) | VijaysirEducation</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #2563eb;
+            --accent: #f59e0b;
+            --whatsapp: #25D366;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text: #1e293b;
+            --correct: #16a34a;
+            --wrong: #dc2626;
+            --review: #7c3aed;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Sans Gujarati', 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-svg {
+            width: 46px;
+            height: 46px;
+            background: white;
+            border-radius: 10px;
+            padding: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .brand-text h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+        .brand-text p {
+            font-size: 0.85rem;
+            color: #e0e7ff;
+            font-weight: 600;
+        }
+        .wa-btn {
+            background-color: var(--whatsapp);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .wa-btn:hover { transform: scale(1.03); }
+
+        /* Start Screen */
+        #start-screen {
+            max-width: 760px;
+            margin: 30px auto;
+            background: var(--card);
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border-top: 6px solid var(--primary);
+        }
+        #start-screen h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        .inst-list {
+            margin: 18px 0 24px 20px;
+            color: #334155;
+        }
+        .inst-list li { margin-bottom: 8px; font-weight: 500; }
+        .legend-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .dot { width: 16px; height: 16px; border-radius: 4px; display: inline-block; }
+        .btn-start {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .btn-start:hover { opacity: 0.95; }
+
+        /* Exam Layout */
+        #exam-screen {
+            display: none;
+            max-width: 1200px;
+            margin: 18px auto;
+            padding: 0 15px 40px;
+        }
+        .exam-top-bar {
+            background: var(--card);
+            padding: 10px 18px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+        }
+        .sec-badge {
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        #timer {
+            background: #fef2f2;
+            color: var(--wrong);
+            padding: 5px 14px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        .exam-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 18px;
+            align-items: start;
+        }
+        @media (max-width: 860px) {
+            .exam-grid { grid-template-columns: 1fr; }
+        }
+        .question-panel {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .q-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #475569;
+        }
+        .q-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 18px;
+        }
+        .opt-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .opt-btn:hover { background: #f8fafc; border-color: var(--secondary); }
+        .opt-btn.selected {
+            background: #eff6ff;
+            border-color: var(--secondary);
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .opt-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .opt-btn.selected .opt-circle {
+            background: var(--secondary);
+            color: white;
+        }
+        .nav-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .ctrl-btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .btn-prev { background: #e2e8f0; color: #1e293b; }
+        .btn-clear { background: #fee2e2; color: #991b1b; }
+        .btn-review { background: #ede9fe; color: #5b21b6; }
+        .btn-next { background: var(--secondary); color: white; margin-left: auto; }
+
+        /* Palette Panel */
+        .palette-panel {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .palette-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+        }
+        .palette-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            max-height: 360px;
+            overflow-y: auto;
+            padding-right: 4px;
+            margin-bottom: 14px;
+        }
+        .p-num {
+            padding: 7px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: #fff;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            text-align: center;
+        }
+        .p-num.current { outline: 2.5px solid var(--accent); }
+        .p-num.answered { background: var(--correct); color: white; border-color: var(--correct); }
+        .p-num.review { background: var(--review); color: white; border-color: var(--review); }
+        .p-num.visited { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+        .btn-submit-exam {
+            width: 100%;
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Result Screen */
+        #result-screen {
+            display: none;
+            max-width: 960px;
+            margin: 25px auto;
+            padding: 0 15px 50px;
+        }
+        .score-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border-top: 6px solid var(--secondary);
+            margin-bottom: 24px;
+        }
+        .score-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .s-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .s-box h3 { font-size: 1.5rem; margin-top: 4px; }
+        .review-card {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-left: 5px solid #cbd5e1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+        }
+        .review-card.r-correct { border-left-color: var(--correct); }
+        .review-card.r-wrong { border-left-color: var(--wrong); }
+        footer {
+            text-align: center;
+            padding: 18px;
+            background: #0f172a;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        footer a { color: var(--whatsapp); font-weight: 700; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="brand">
+            <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://w3.org">
+                <rect width="64" height="64" rx="12" fill="#1e3a8a"/>
+                <path d="M32 12L8 24L32 36L56 24L32 12Z" fill="#f59e0b"/>
+                <path d="M16 30V44C16 44 24 50 32 50C40 50 48 44 48 44V30L32 38L16 30Z" fill="#ffffff"/>
+                <text x="32" y="27" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#1e3a8a" text-anchor="middle">VE</text>
+            </svg>
+            <div class="brand-text">
+                <h1>VijaysirEducation</h1>
+                <p>Paper No - 71 | TET 1 / 2 Exam 2027 (Exam Mode)</p>
+            </div>
+        </div>
+        <a href="https://whatsapp.com/channel/0029VbEDjoj3AzNRGwbV5A15" target="_blank" class="wa-btn">
+            <span>💬 Join WhatsApp Channel</span>
+        </a>
+    </div>
+</header>
+
+<!-- Start Screen -->
+<div id="start-screen">
+    <h2>📋 પરીક્ષાની સૂચનાઓ (Exam Instructions) - Paper No - 71</h2>
+    <p style="color:#475569; font-weight:600;">TET 1 / 2 Exam 2027 | VijaysirEducation Online CBT Mode</p>
+    <ul class="inst-list">
+        <li>આ પ્રશ્નપત્રમાં કુલ <strong>150 બહુવિકલ્પીય પ્રશ્નો (MCQs)</strong> છે અને કુલ ગુણ <strong>150</strong> છે.</li>
+        <li>પરીક્ષાનો કુલ સમય <strong>150 મિનિટ</strong> રહેશે. સમય પૂરો થતાં પરીક્ષા આપમેળે સબમિટ થઈ જશે.</li>
+        <li>દરેક સાચા જવાબ માટે <strong>1 ગુણ</strong> મળશે. કોઈ નેગેટિવ માર્કિંગ નથી.</li>
+        <li>જમણી બાજુ આપેલા <strong>Question Palette</strong> ની મદદથી તમે કોઈપણ પ્રશ્ન પર સીધા જઈ શકો છો.</li>
+    </ul>
+    <div class="legend-grid">
+        <div class="legend-item"><span class="dot" style="background:#16a34a;"></span> જવાબ આપેલ (Answered)</div>
+        <div class="legend-item"><span class="dot" style="background:#7c3aed;"></span> રિવ્યુ માટે (Marked for Review)</div>
+        <div class="legend-item"><span class="dot" style="background:#fee2e2; border:1px solid #fca5a5;"></span> જવાબ બાકી (Not Answered)</div>
+        <div class="legend-item"><span class="dot" style="background:#fff; border:1px solid #cbd5e1;"></span> મુલાકાત લીધેલ નથી (Not Visited)</div>
+    </div>
+    <button class="btn-start" onclick="startExam()">🚀 પરીક્ષા શરૂ કરો (Start Exam)</button>
+</div>
+
+<!-- Exam Screen -->
+<div id="exam-screen">
+    <div class="exam-top-bar">
+        <span class="sec-badge" id="section-label">વિભાગ - 1 : બાળવિકાસ અને શિક્ષણના સિદ્ધાંતો</span>
+        <div id="timer">⏱️ 150:00</div>
+    </div>
+
+    <div class="exam-grid">
+        <div class="question-panel">
+            <div class="q-header">
+                <span id="q-counter">પ્રશ્ન 1 / 150</span>
+                <span>ગુણ: +1</span>
+            </div>
+            <div class="q-title" id="q-text"></div>
+            <div id="options-box"></div>
+
+            <div class="nav-controls">
+                <button type="button" class="ctrl-btn btn-prev" onclick="prevQuestion()">⬅️ Previous</button>
+                <button type="button" class="ctrl-btn btn-clear" onclick="clearResponse()">🗑️ Clear</button>
+                <button type="button" class="ctrl-btn btn-review" onclick="markReviewNext()">🔖 Mark for Review & Next</button>
+                <button type="button" class="ctrl-btn btn-next" onclick="saveNext()">Save & Next ➡️</button>
+            </div>
+        </div>
+
+        <div class="palette-panel">
+            <div class="palette-title">
+                <span>Question Palette</span>
+                <span>1 - 150</span>
+            </div>
+            <div class="palette-stats">
+                <div>✅ Answered: <strong id="stat-ans">0</strong></div>
+                <div>🔖 Review: <strong id="stat-rev">0</strong></div>
+                <div>❌ Unanswered: <strong id="stat-unans">0</strong></div>
+                <div>⚪ Not Visited: <strong id="stat-notvis">150</strong></div>
+            </div>
+            <div class="palette-grid" id="palette-grid"></div>
+            <button type="button" class="btn-submit-exam" onclick="confirmSubmit()">✅ Submit Exam</button>
+        </div>
+    </div>
+</div>
+
+<!-- Result Screen -->
+<div id="result-screen">
+    <div class="score-card">
+        <h2 style="color:var(--primary);">🎉 પરીક્ષા પરિણામ (Scorecard) - VijaysirEducation</h2>
+        <p style="font-weight:700; color:#475569; margin-top:4px;">Paper No - 71 | TET 1 / 2 Exam 2027</p>
+        <div class="score-boxes">
+            <div class="s-box"><p>કુલ પ્રશ્નો</p><h3>150</h3></div>
+            <div class="s-box" style="color:var(--correct);"><p>સાચા જવાબ</p><h3 id="res-correct">0</h3></div>
+            <div class="s-box" style="color:var(--wrong);"><p>ખોટા જવાબ</p><h3 id="res-wrong">0</h3></div>
+            <div class="s-box" style="color:#64748b;"><p>છોડેલા પ્રશ્નો</p><h3 id="res-skip">0</h3></div>
+            <div class="s-box" style="color:var(--secondary);"><p>કુલ ગુણ</p><h3 id="res-score">0 / 150</h3></div>
+        </div>
+        <a href="https://whatsapp.com/channel/0029VbEDjoj3AzNRGwbV5A15" target="_blank" class="wa-btn">
+            Join WhatsApp Link : https://whatsapp.com/channel/0029VbEDjoj3AzNRGwbV5A15
+        </a>
+    </div>
+    <h3 style="margin-bottom:14px; color:var(--primary);">📖 સંપૂર્ણ ઉત્તરમાળા અને સમીક્ષા (Full Answer Review)</h3>
+    <div id="review-list"></div>
+</div>
+
+<footer>
+    <p>© 2027 <strong>VijaysirEducation</strong> - Paper No - 71 (TET 1 / 2 Exam 2027)</p>
+    <p style="margin-top:6px;">Join WhatsApp Link : <a href="https://whatsapp.com/channel/0029VbEDjoj3AzNRGwbV5A15" target="_blank">https://whatsapp.com/channel/0029VbEDjoj3AzNRGwbV5A15</a></p>
+</footer>
+
+<script>
+const questions = [{"q": "1. ZPD ખ્યાલ કોણે આપ્યો?", "opts": ["વાઇગોત્સ્કી", "સ્કિનર", "પિયાજે", "પાવલોવ"], "ans": 0}, {"q": "2. વિકાસમાં મુખ્ય પ્રભાવ કયો?", "opts": ["કોઈ નહીં", "વારસો", "બંને", "વાતાવરણ"], "ans": 2}, {"q": "3. વિકાસ વિશે સાચું વિધાન?", "opts": ["હંમેશાં સમાન", "માત્ર વારસો", "સતત પ્રક્રિયા", "માત્ર ઊંચાઈ"], "ans": 2}, {"q": "4. સુધારેલા બ્લૂમ વર્ગીકરણનું સર્વોચ્ચ સ્તર?", "opts": ["યાદ", "સર્જન", "ઉપયોગ", "સમજ"], "ans": 1}, {"q": "5. શાસ્ત્રીય અભિસંધાન કોણે આપ્યું?", "opts": ["બ્રુનર", "સ્કિનર", "પાવલોવ", "પિયાજે"], "ans": 2}, {"q": "6. લિંગ સમાનતા માટે શું કરવું?", "opts": ["અલગ પાઠ", "છોકરાને તક", "છોકરીને તક", "બધાને તક"], "ans": 3}, {"q": "7. રૂબ્રિકનો હેતુ?", "opts": ["સ્પષ્ટ માપદંડ", "ગુણ છુપાવવા", "પાઠ ટાળવા", "ડર"], "ans": 0}, {"q": "8. ડિસ્લેક્સિયા કઈ મુશ્કેલી છે?", "opts": ["શ્રવણ", "ચાલવું", "વાંચન", "દૃષ્ટિ"], "ans": 2}, {"q": "9. અસરનો નિયમ કોણે આપ્યો?", "opts": ["થોર્નડાઈક", "ગાર્ડનર", "કોહલબર્ગ", "પિયાજે"], "ans": 0}, {"q": "10. રચનાત્મક મૂલ્યાંકનનું સાધન?", "opts": ["રેન્ક", "માત્ર વાર્ષિક પરીક્ષા", "અવલોકન", "હાજરી"], "ans": 2}, {"q": "11. અભ્યાસમાં રસ ન લે તો?", "opts": ["કારણ શોધવું", "નિષ્ફળ જાહેર", "સજા", "અવગણના"], "ans": 0}, {"q": "12. જૂનું જ્ઞાન નવી સ્થિતિમાં વાપરવું?", "opts": ["અભિસંધાન", "સ્થાનાંતરણ", "અનુકરણ", "વિસ્મરણ"], "ans": 1}, {"q": "13. આંતરિક પ્રેરણાનું ઉદાહરણ?", "opts": ["જિજ્ઞાસા", "ઇનામ", "સજા ટાળવી", "ગુણ"], "ans": 0}, {"q": "14. નિદાનાત્મક કસોટી શા માટે?", "opts": ["ક્રમ", "હાજરી", "પ્રવેશ", "મુશ્કેલી શોધવા"], "ans": 3}, {"q": "15. બહુવિધ બુદ્ધિનો સિદ્ધાંત કોનો?", "opts": ["ગાર્ડનર", "પાવલોવ", "સ્કિનર", "થોર્નડાઈક"], "ans": 0}, {"q": "16. જુદા ઉપાય અજમાવવાથી શું વિકસે?", "opts": ["ભય", "ગોખણ", "નિષ્ક્રિયતા", "સમસ્યા ઉકેલ"], "ans": 3}, {"q": "17. સમાવેશી શિક્ષણનો હેતુ?", "opts": ["અલગ શિક્ષણ", "માત્ર ગુણ", "માત્ર તેજસ્વી", "બધાને તક"], "ans": 3}, {"q": "18. સહકારથી અધ્યયન કયા અભિગમમાં?", "opts": ["સામાજિક રચનાવાદ", "ગોખણપટ્ટી", "વ્યાખ્યાન", "દંડ"], "ans": 0}, {"q": "19. સ્કેફોલ્ડિંગ એટલે?", "opts": ["જરૂર મુજબ સહાય", "કાયમી સહાય", "કોઈ સહાય નહીં", "સજા"], "ans": 0}, {"q": "20. રમત આધારિત શિક્ષણથી?", "opts": ["સમય બગડે", "અનુભવથી શીખાય", "માત્ર સ્પર્ધા", "અભ્યાસ બંધ"], "ans": 1}, {"q": "21. ક્રિયાપ્રસૂત અભિસંધાન કોનું?", "opts": ["કોહલબર્ગ", "સ્કિનર", "પાવલોવ", "ગાર્ડનર"], "ans": 1}, {"q": "22. રચનાત્મક મૂલ્યાંકનનો હેતુ?", "opts": ["ક્રમ", "અંતિમ પરિણામ", "સુધારો", "સરખામણી"], "ans": 2}, {"q": "23. બાળકની ભૂલ વખતે યોગ્ય કાર્ય કયું?", "opts": ["માર્ગદર્શન", "સજા", "બહાર કાઢવું", "અવગણના"], "ans": 0}, {"q": "24. રચનાવાદ મુજબ જ્ઞાન કોણ રચે છે?", "opts": ["માત્ર શિક્ષક", "બાળક", "પરીક્ષક", "માત્ર પુસ્તક"], "ans": 1}, {"q": "25. સર્જનાત્મક પ્રશ્ન કયો?", "opts": ["નામ શું?", "પાનું કયું?", "બીજો ઉપાય કયો?", "વ્યાખ્યા શું?"], "ans": 2}, {"q": "26. પોતાની ગતિએ શીખવાનો આધાર?", "opts": ["વ્યક્તિગત ભિન્નતા", "શિસ્ત", "સમાન ગતિ", "માત્ર પરીક્ષા"], "ans": 0}, {"q": "27. પિયાજેનો 7-11 વર્ષનો તબક્કો કયો?", "opts": ["સંવેદનપ્રેરક", "પૂર્વસંક્રિયાત્મક", "ઔપચારિક", "મૂર્ત સંક્રિયાત્મક"], "ans": 3}, {"q": "28. પોતાના વિચાર વિશે વિચારવું એટલે?", "opts": ["પ્રબલન", "અનુકરણ", "અધિસંજ્ઞાન", "વિસ્મરણ"], "ans": 2}, {"q": "29. નૈતિક વિકાસનો સિદ્ધાંત કોણે આપ્યો?", "opts": ["ગાર્ડનર", "સ્કિનર", "પાવલોવ", "કોહલબર્ગ"], "ans": 3}, {"q": "30. જૂથકાર્યથી શું વિકસે?", "opts": ["નિષ્ક્રિયતા", "સામાજિક કૌશલ્ય", "ભય", "એકલતા"], "ans": 1}, {"q": "31. ઝાડ પર પક્ષી બેઠું છે; નામ?", "opts": ["પર અને છે", "ઝાડ અને પક્ષી", "બેઠું અને છે", "માત્ર પર"], "ans": 1}, {"q": "32. લેખનક્ષમતા માપવા?", "opts": ["ગણિત", "માત્ર ચિત્ર", "અનુભવનું વર્ણન", "હાજરી"], "ans": 2}, {"q": "33. મીઠું બોલવુંમાં મીઠું શું દર્શાવે?", "opts": ["સમય", "સ્થળ", "રીત", "સંખ્યા"], "ans": 2}, {"q": "34. અતિશયનો અર્થ?", "opts": ["થોડું", "કદાચ", "સામાન્ય", "અત્યંત"], "ans": 3}, {"q": "35. હાથ ધોઈ પાછળ પડવું એટલે?", "opts": ["સફાઈ", "મદદ", "હાથ ધોવા", "પીછો કરવો"], "ans": 3}, {"q": "36. અને કયા પ્રકારનો શબ્દ?", "opts": ["સર્વનામ", "નામ", "સમુચ્ચયબોધક", "વિશેષણ"], "ans": 2}, {"q": "37. કમળનું લિંગ?", "opts": ["પુલ્લિંગ", "ઉભયલિંગ", "નપુંસકલિંગ", "સ્ત્રીલિંગ"], "ans": 2}, {"q": "38. વાંચન-સમજનો પ્રશ્ન?", "opts": ["કાગળ કેવો?", "અક્ષર કેટલા?", "પાનાનો રંગ?", "મુખ્ય વિચાર શું?"], "ans": 3}, {"q": "39. ભાષાકીય ભૂલોનું વિશ્લેષણ શા માટે?", "opts": ["સજા", "અંક ઘટાડવા", "જરૂરિયાત જાણવા", "વર્ગ વહેંચવા"], "ans": 2}, {"q": "40. જેવું વાવશો તેવું લણશો એટલે?", "opts": ["આળસ", "વરસાદ", "ખેતી", "કર્મ પ્રમાણે ફળ"], "ans": 3}, {"q": "41. સુંદર ફૂલમાં વિશેષણ?", "opts": ["કોઈ નહીં", "બંને", "ફૂલ", "સુંદર"], "ans": 3}, {"q": "42. જળનો સમાનાર્થી?", "opts": ["અગ્નિ", "પવન", "પાણી", "ધરતી"], "ans": 2}, {"q": "43. હું કાલે જઈશ: કાળ?", "opts": ["પૂર્ણ ભૂત", "ભૂત", "ભવિષ્ય", "વર્તમાન"], "ans": 2}, {"q": "44. ઉદારનો વિરુદ્ધાર્થી?", "opts": ["સહૃદય", "વિશાળ", "દયાળુ", "કૃપણ"], "ans": 3}, {"q": "45. સૂર્યનો સમાનાર્થી?", "opts": ["તારા", "નિશા", "રવિ", "શશિ"], "ans": 2}, {"q": "46. અનુશાસનમાં ઉપસર્ગ કયો?", "opts": ["શન", "શાસન", "ન", "અનુ"], "ans": 3}, {"q": "47. બાળસાહિત્યનો મુખ્ય લાભ?", "opts": ["વાંચનરસ", "માત્ર ઝડપ", "ગોખણ", "પરીક્ષાભય"], "ans": 0}, {"q": "48. શ્રવણ કૌશલ્ય માટે?", "opts": ["નકલ", "વ્યાકરણ", "વાર્તા સાંભળવી", "મૌન લેખન"], "ans": 2}, {"q": "49. પંખી ઊડે છે: કર્તા?", "opts": ["ઊડે", "કોઈ નહીં", "પંખી", "છે"], "ans": 2}, {"q": "50. રમેશ વાંચે છે; ક્રિયાપદ?", "opts": ["રમેશ", "કોઈ નહીં", "વાંચે છે", "પુસ્તક"], "ans": 2}, {"q": "51. શબ્દભંડોળ માટે શ્રેષ્ઠ પ્રવૃત્તિ?", "opts": ["ચિત્રવર્ણન", "નકલ", "સજા", "મૌન"], "ans": 0}, {"q": "52. વિદ્યાલયમાં કઈ સંધિ?", "opts": ["વિસર્ગ", "વ્યંજન", "સ્વર", "કોઈ નહીં"], "ans": 2}, {"q": "53. જોડણી સુધારવા શું કરવું?", "opts": ["અર્થપૂર્ણ લેખન", "માત્ર નકલ", "મૌન", "દંડ"], "ans": 0}, {"q": "54. અંધકારનો વિરુદ્ધાર્થી?", "opts": ["રાત્રિ", "અંધારું", "છાયા", "પ્રકાશ"], "ans": 3}, {"q": "55. માતૃભાષાના પ્રભાવથી ભૂલ થાય તો?", "opts": ["વર્ગ બદલવો", "દંડ", "માર્ગદર્શન", "બોલવા રોકવું"], "ans": 2}, {"q": "56. સંવાદથી શું વિકસે?", "opts": ["માત્ર ગુણ", "મૌખિક અભિવ્યક્તિ", "માત્ર લખાણ", "માત્ર શિસ્ત"], "ans": 1}, {"q": "57. આંખનો તારો એટલે?", "opts": ["તારો", "અતિ પ્રિય", "રોગ", "ચમક"], "ans": 1}, {"q": "58. નિર્ભયનો વિરુદ્ધાર્થી?", "opts": ["ભયભીત", "સાહસિક", "શૂરવીર", "નિડર"], "ans": 0}, {"q": "59. પુસ્તકોનું એકવચન?", "opts": ["પુસ્તકાં", "પુસ્તકા", "પુસ્તકી", "પુસ્તક"], "ans": 3}, {"q": "60. અર્થપૂર્ણ વાંચનનો હેતુ?", "opts": ["પરીક્ષા", "સમજ", "માત્ર ઝડપ", "માત્ર જોડણી"], "ans": 1}, {"q": "61. Scanning means?", "opts": ["Memorise", "Specific information", "Read aloud", "Essay"], "ans": 1}, {"q": "62. Opposite of Expand?", "opts": ["Extend", "Contract", "Increase", "Grow"], "ans": 1}, {"q": "63. Comparative of Good?", "opts": ["Best", "Gooder", "Better", "More good"], "ans": 2}, {"q": "64. If I ___ a bird, I would fly.", "opts": ["were", "am", "was", "be"], "ans": 0}, {"q": "65. He ___ to school every day.", "opts": ["gone", "goes", "going", "go"], "ans": 1}, {"q": "66. Beautiful is a/an?", "opts": ["Conjunction", "Preposition", "Verb", "Adjective"], "ans": 3}, {"q": "67. Quickly is a/an?", "opts": ["Noun", "Article", "Pronoun", "Adverb"], "ans": 3}, {"q": "68. Goal of communicative teaching?", "opts": ["Translation only", "Memorising", "Communication", "Copying"], "ans": 2}, {"q": "69. Past tense of Teach?", "opts": ["Teach", "Teaching", "Teached", "Taught"], "ans": 3}, {"q": "70. Language-rich classroom?", "opts": ["Tests only", "Silence", "Discussion and stories", "No books"], "ans": 2}, {"q": "71. Multilingual classroom should?", "opts": ["Value home languages", "Memorise only", "Ban home languages", "Avoid interaction"], "ans": 0}, {"q": "72. Correct spelling?", "opts": ["Enviroment", "Environment", "Envirnment", "Enviornment"], "ans": 1}, {"q": "73. She is ___ honest girl.", "opts": ["the", "an", "a", "no article"], "ans": 1}, {"q": "74. Vocabulary in context?", "opts": ["Meaningful passages", "Punishment", "No talk", "Copy only"], "ans": 0}, {"q": "75. Antonym of Ancient?", "opts": ["Historic", "Old", "Modern", "Early"], "ans": 2}, {"q": "76. Teacher response to speaking errors?", "opts": ["Supportive feedback", "Stop participation", "Punish", "Ignore"], "ans": 0}, {"q": "77. Formative assessment aims to?", "opts": ["Improve learning", "Replace teaching", "Final grades only", "Rank only"], "ans": 0}, {"q": "78. He is a teacher, ___?", "opts": ["is he", "didn't he", "does he", "isn't he"], "ans": 3}, {"q": "79. Speaking assessment?", "opts": ["Silent reading", "Copying", "Dictation", "Role-play"], "ans": 3}, {"q": "80. The book is ___ the table.", "opts": ["at", "by", "on", "to"], "ans": 2}, {"q": "81. Skimming means?", "opts": ["Every letter", "Translation", "Main idea", "Spelling"], "ans": 2}, {"q": "82. They ___ playing now.", "opts": ["am", "be", "is", "are"], "ans": 3}, {"q": "83. A person who writes poems?", "opts": ["Singer", "Painter", "Poet", "Driver"], "ans": 2}, {"q": "84. Collective noun?", "opts": ["Pen", "Team", "Water", "Boy"], "ans": 1}, {"q": "85. Plural of Child?", "opts": ["Childrens", "Childs", "Children", "Childes"], "ans": 2}, {"q": "86. Passive: Rita writes a letter.", "opts": ["A letter is written by Rita.", "A letter wrote Rita.", "A letter writes Rita.", "Rita is written by a letter."], "ans": 0}, {"q": "87. Listening skill activity?", "opts": ["Draw silently", "Copy paragraph", "Listen to story", "Spelling only"], "ans": 2}, {"q": "88. Correct sentence?", "opts": ["She does not like tea.", "She not likes tea.", "She don't likes tea.", "She do not like tea."], "ans": 0}, {"q": "89. Synonym of Happy?", "opts": ["Joyful", "Sad", "Angry", "Weak"], "ans": 0}, {"q": "90. Neither Ram nor his friends ___ absent.", "opts": ["be", "are", "was", "is"], "ans": 1}, {"q": "91. 5406માં 4ની સ્થાનકિંમત?", "opts": ["400", "4000", "4", "40"], "ans": 0}, {"q": "92. 5, 10, 15, 20 પછી?", "opts": ["30", "25", "22", "24"], "ans": 1}, {"q": "93. 2.4 + 3.75 = ?", "opts": ["6.25", "6.15", "6.05", "5.15"], "ans": 1}, {"q": "94. 1.5 કિમી = કેટલા મીટર?", "opts": ["1050", "1500", "15000", "150"], "ans": 1}, {"q": "95. 8 સેમી બાજુના ચોરસની પરિમિતિ?", "opts": ["16", "64", "24", "32"], "ans": 3}, {"q": "96. અવિભાજ્ય સંખ્યા?", "opts": ["21", "33", "29", "27"], "ans": 2}, {"q": "97. બાળકની વૈકલ્પિક સાચી રીત?", "opts": ["રદ કરવી", "ચર્ચા કરાવવી", "નકારવી", "પુસ્તકની રીત જ"], "ans": 1}, {"q": "98. 3/4 + 1/8 = ?", "opts": ["4/12", "5/8", "7/8", "1/2"], "ans": 2}, {"q": "99. 2 કલાક 35 મિનિટ = ?", "opts": ["145", "165", "155", "125"], "ans": 2}, {"q": "100. સંખ્યાનો 1/3 ભાગ 15 તો સંખ્યા?", "opts": ["45", "60", "30", "50"], "ans": 0}, {"q": "101. 2, 3, 3, 4, 5નો બહુલક?", "opts": ["2", "4", "5", "3"], "ans": 3}, {"q": "102. ₹800ની વસ્તુ ₹920માં વેચી: નફો %?", "opts": ["12", "20", "10", "15"], "ans": 3}, {"q": "103. 864 ÷ 12 = ?", "opts": ["82", "62", "72", "92"], "ans": 2}, {"q": "104. ₹1200નું 5% દરે 2 વર્ષનું સાદું વ્યાજ?", "opts": ["60", "120", "150", "100"], "ans": 1}, {"q": "105. 4, 6, 8, 10, 12ની સરેરાશ?", "opts": ["6", "9", "8", "7"], "ans": 2}, {"q": "106. 900 - 467 = ?", "opts": ["453", "433", "423", "443"], "ans": 1}, {"q": "107. 0.75નું અપૂર્ણાંક?", "opts": ["1/4", "7/10", "2/5", "3/4"], "ans": 3}, {"q": "108. 375 + 248 = ?", "opts": ["633", "603", "613", "623"], "ans": 3}, {"q": "109. 305ને 3005 લખે તો શું તપાસવું?", "opts": ["ઝડપ", "હાજરી", "હસ્તાક્ષર", "સ્થાનકિંમત"], "ans": 3}, {"q": "110. અપૂર્ણાંક માટે સાધન?", "opts": ["કાગળના ભાગ", "સૂત્ર", "વ્યાખ્યાન", "કોષ્ટક"], "ans": 0}, {"q": "111. 12 × 5 સેમી લંબચોરસનું ક્ષેત્રફળ?", "opts": ["17", "120", "60", "34"], "ans": 2}, {"q": "112. 24 × 15 = ?", "opts": ["380", "300", "360", "340"], "ans": 2}, {"q": "113. 250ના 20%?", "opts": ["25", "50", "40", "60"], "ans": 1}, {"q": "114. મૂર્ત સામગ્રીનો લાભ?", "opts": ["ખ્યાલની સમજ", "સજાવટ", "સમય પસાર", "પરીક્ષા"], "ans": 0}, {"q": "115. ત્રિકોણના ખૂણાનો સરવાળો?", "opts": ["90°", "360°", "270°", "180°"], "ans": 3}, {"q": "116. 12 અને 18નો લ.સા.અ.?", "opts": ["72", "6", "24", "36"], "ans": 3}, {"q": "117. ગણિતીય ભૂલનું વિશ્લેષણ?", "opts": ["હાજરી", "ગેરસમજ ઓળખવી", "ગુણ", "દંડ"], "ans": 1}, {"q": "118. ખુલ્લા પ્રશ્નોનો લાભ?", "opts": ["મૌન", "વિવિધ ઉકેલ", "ગોખણ", "એક રીત"], "ans": 1}, {"q": "119. 2:3માં કુલ 50નો પ્રથમ ભાગ?", "opts": ["30", "20", "35", "25"], "ans": 1}, {"q": "120. 24 અને 36નો ગુ.સા.અ.?", "opts": ["6", "24", "12", "18"], "ans": 2}, {"q": "121. EVSનો સંકલિત અભિગમ?", "opts": ["માત્ર પરીક્ષા", "માત્ર વ્યાખ્યા", "વિજ્ઞાન-સમાજ-જીવનનું જોડાણ", "વિષયો અલગ"], "ans": 2}, {"q": "122. કચરાનું વર્ગીકરણ શા માટે?", "opts": ["પાણી બગાડવા", "પુનઃઉપયોગ", "ધુમાડો", "કચરો વધારવા"], "ans": 1}, {"q": "123. ખોરાક સાંકળમાં ઉત્પાદક?", "opts": ["સિંહ", "વાઘ", "લીલા છોડ", "મનુષ્ય"], "ans": 2}, {"q": "124. સંતુલિત આહાર?", "opts": ["માત્ર પાણી", "માત્ર ચરબી", "માત્ર અનાજ", "યોગ્ય પોષકતત્ત્વો"], "ans": 3}, {"q": "125. EVSમાં ચર્ચાનો હેતુ?", "opts": ["નકલ", "ગોખણ", "વિચારવિમર્શ", "શિસ્ત"], "ans": 2}, {"q": "126. લોહી પંપ કરતું અંગ?", "opts": ["ફેફસાં", "યકૃત", "હૃદય", "મૂત્રપિંડ"], "ans": 2}, {"q": "127. દિશાસૂચક સોયની દિશા?", "opts": ["પૂર્વ-પશ્ચિમ", "ઉપર-નીચે", "ઉત્તર-દક્ષિણ", "માત્ર પૂર્વ"], "ans": 2}, {"q": "128. ટકાઉ વિકાસ એટલે?", "opts": ["માત્ર શહેર", "અમર્યાદ વપરાશ", "માત્ર ઉદ્યોગ", "ભવિષ્યને નુકસાન વિના વિકાસ"], "ans": 3}, {"q": "129. જૈવવિઘટનક્ષમ કચરો?", "opts": ["કેળાની છાલ", "એલ્યુમિનિયમ", "કાચ", "પ્લાસ્ટિક"], "ans": 0}, {"q": "130. માટીના ધોવાણને શું રોકે?", "opts": ["વનવિનાશ", "અતિચરાણ", "ખાલી ઢોળાવ", "વૃક્ષારોપણ"], "ans": 3}, {"q": "131. બંધારણનો અમલ ક્યારે?", "opts": ["2-10-1950", "26-11-1949", "15-8-1947", "26-1-1950"], "ans": 3}, {"q": "132. ગ્રામ પંચાયતના વડા?", "opts": ["તલાટી", "રાજ્યપાલ", "સરપંચ", "કલેક્ટર"], "ans": 2}, {"q": "133. દિવસ-રાતનું કારણ?", "opts": ["પરિક્રમા", "પરિભ્રમણ", "વરસાદ", "ગ્રહણ"], "ans": 1}, {"q": "134. ભારતનું રાષ્ટ્રીય પ્રાણી?", "opts": ["દીપડો", "વાઘ", "હાથી", "સિંહ"], "ans": 1}, {"q": "135. EVS પ્રગતિ માટે?", "opts": ["રેન્ક", "હાજરી", "માત્ર વાર્ષિક પરીક્ષા", "અવલોકન અને પ્રોજેક્ટ"], "ans": 3}, {"q": "136. પાંદડાં ભેગાં કરીને જૂથ પાડવું?", "opts": ["ગોખણ", "અનુવાદ", "અવલોકન અને વર્ગીકરણ", "નકલ"], "ans": 2}, {"q": "137. મચ્છરથી ફેલાતો રોગ?", "opts": ["ટાઇફોઇડ", "હડકવા", "મેલેરિયા", "ક્ષય"], "ans": 2}, {"q": "138. પોષણ માટે યોગ્ય પ્રવૃત્તિ?", "opts": ["નકલ", "ખોરાક વર્ગીકરણ", "સૂત્ર", "સજા"], "ans": 1}, {"q": "139. પરિવારની માહિતી એકત્ર કરવી કઈ પદ્ધતિ?", "opts": ["પ્રોજેક્ટ", "વ્યાખ્યાન", "ગોખણ", "પરીક્ષા"], "ans": 0}, {"q": "140. બાષ્પીભવન એટલે?", "opts": ["પ્રવાહીથી ઘન", "પ્રવાહીથી વાયુ", "ઘનથી પ્રવાહી", "વાયુથી પ્રવાહી"], "ans": 1}, {"q": "141. વરસાદી પાણીનો સંગ્રહ શા માટે?", "opts": ["જળસંરક્ષણ", "જમીન સૂકવવા", "બગાડ", "પ્રદૂષણ"], "ans": 0}, {"q": "142. સ્થાનિક મુલાકાતનો લાભ?", "opts": ["પ્રત્યક્ષ અનુભવ", "માત્ર ગુણ", "વર્ગ ટાળવો", "માત્ર મનોરંજન"], "ans": 0}, {"q": "143. ભૂકંપમાં ઘરની અંદર?", "opts": ["લિફ્ટમાં", "સીડી પર", "બારી પાસે", "મજબૂત ટેબલ નીચે"], "ans": 3}, {"q": "144. પાણી ઉકાળવાથી?", "opts": ["બધું મીઠું દૂર", "ઓક્સિજન વધે", "ઘણા રોગકારક સૂક્ષ્મજીવો નાશ પામે", "બધાં રસાયણ દૂર"], "ans": 2}, {"q": "145. નકશામાં પ્રતીકો શા માટે?", "opts": ["દિશા બદલવા", "સુંદરતા", "માહિતી દર્શાવવા", "અંતર વધારવા"], "ans": 2}, {"q": "146. સ્થાનિક વ્યવસાયનો અભ્યાસ?", "opts": ["માત્ર ગણિત", "માત્ર વ્યાકરણ", "માત્ર અંગ્રેજી", "પર્યાવરણ અભ્યાસ"], "ans": 3}, {"q": "147. નવીનીકરણીય ઊર્જા?", "opts": ["કોલસો", "પેટ્રોલ", "સૌર ઊર્જા", "ડીઝલ"], "ans": 2}, {"q": "148. છોડ પ્રકાશસંશ્લેષણમાં કયો વાયુ લે?", "opts": ["હાઇડ્રોજન", "કાર્બન ડાયોક્સાઇડ", "નાઇટ્રોજન", "ઓક્સિજન"], "ans": 1}, {"q": "149. જૈવવિવિધતા એટલે?", "opts": ["માત્ર પ્રાણી", "જીવસૃષ્ટિની વિવિધતા", "માત્ર વૃક્ષ", "માત્ર માટી"], "ans": 1}, {"q": "150. પૂર્વજ્ઞાનનો ઉપયોગ શા માટે?", "opts": ["નવા ખ્યાલ સાથે જોડાણ", "સમય", "હાજરી", "ભૂલાવવા"], "ans": 0}];
+
+const letters = ["A", "B", "C", "D"];
+let currentIdx = 0;
+let userAnswers = new Array(questions.length).fill(null);
+let markedReview = new Array(questions.length).fill(false);
+let visited = new Array(questions.length).fill(false);
+let totalSeconds = 150 * 60;
+let timerInterval = null;
+
+function getSectionName(idx) {
+    if (idx < 30) return "વિભાગ - 1 : બાળવિકાસ અને શિક્ષણના સિદ્ધાંતો (Q. 1 - 30)";
+    if (idx < 60) return "વિભાગ - 2 : ગુજરાતી ભાષા (Q. 31 - 60)";
+    if (idx < 90) return "વિભાગ - 3 : અંગ્રેજી ભાષા (Q. 61 - 90)";
+    if (idx < 120) return "વિભાગ - 4 : ગણિત (Q. 91 - 120)";
+    return "વિભાગ - 5 : પર્યાવરણ / સામાન્ય જ્ઞાન (Q. 121 - 150)";
+}
+
+function startExam() {
+    document.getElementById("start-screen").style.display = "none";
+    document.getElementById("exam-screen").style.display = "block";
+    buildPalette();
+    renderQuestion(0);
+    startTimer();
+}
+
+function startTimer() {
+    const timerEl = document.getElementById("timer");
+    timerInterval = setInterval(() => {
+        if (totalSeconds <= 0) {
+            clearInterval(timerInterval);
+            finishExam();
+            return;
+        }
+        totalSeconds--;
+        const mins = Math.floor(totalSeconds / 60);
+        const secs = totalSeconds % 60;
+        timerEl.textContent = `⏱️ ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }, 1000);
+}
+
+function buildPalette() {
+    const grid = document.getElementById("palette-grid");
+    grid.innerHTML = "";
+    for (let i = 0; i < questions.length; i++) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "p-num";
+        btn.id = `p-btn-${i}`;
+        btn.textContent = i + 1;
+        btn.onclick = () => renderQuestion(i);
+        grid.appendChild(btn);
+    }
+}
+
+function updatePalette() {
+    let ansCount = 0, revCount = 0, unansCount = 0, notVisCount = 0;
+    for (let i = 0; i < questions.length; i++) {
+        const btn = document.getElementById(`p-btn-${i}`);
+        btn.className = "p-num";
+        if (i === currentIdx) btn.classList.add("current");
+
+        if (markedReview[i]) {
+            btn.classList.add("review");
+            revCount++;
+        } else if (userAnswers[i] !== null) {
+            btn.classList.add("answered");
+            ansCount++;
+        } else if (visited[i]) {
+            btn.classList.add("visited");
+            unansCount++;
+        } else {
+            notVisCount++;
+        }
+    }
+    document.getElementById("stat-ans").textContent = ansCount;
+    document.getElementById("stat-rev").textContent = revCount;
+    document.getElementById("stat-unans").textContent = unansCount;
+    document.getElementById("stat-notvis").textContent = notVisCount;
+}
+
+function renderQuestion(idx) {
+    currentIdx = idx;
+    visited[idx] = true;
+    const item = questions[idx];
+
+    document.getElementById("section-label").textContent = getSectionName(idx);
+    document.getElementById("q-counter").textContent = `પ્રશ્ન ${idx + 1} / ${questions.length}`;
+    document.getElementById("q-text").textContent = item.q;
+
+    const box = document.getElementById("options-box");
+    box.innerHTML = "";
+    item.opts.forEach((opt, oIdx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "opt-btn" + (userAnswers[idx] === oIdx ? " selected" : "");
+        btn.innerHTML = `<span class="opt-circle">${letters[oIdx]}</span><span>${opt}</span>`;
+        btn.onclick = () => {
+            userAnswers[idx] = oIdx;
+            renderQuestion(idx);
+        };
+        box.appendChild(btn);
+    });
+
+    updatePalette();
+}
+
+function prevQuestion() {
+    if (currentIdx > 0) renderQuestion(currentIdx - 1);
+}
+
+function clearResponse() {
+    userAnswers[currentIdx] = null;
+    markedReview[currentIdx] = false;
+    renderQuestion(currentIdx);
+}
+
+function markReviewNext() {
+    markedReview[currentIdx] = true;
+    if (currentIdx < questions.length - 1) {
+        renderQuestion(currentIdx + 1);
+    } else {
+        updatePalette();
+    }
+}
+
+function saveNext() {
+    markedReview[currentIdx] = false;
+    if (currentIdx < questions.length - 1) {
+        renderQuestion(currentIdx + 1);
+    } else {
+        updatePalette();
+    }
+}
+
+function confirmSubmit() {
+    const answered = userAnswers.filter(a => a !== null).length;
+    if (confirm(`તમે કુલ ${answered} / 150 પ્રશ્નોના જવાબ આપ્યા છે. શું તમે પરીક્ષા સબમિટ કરવા માંગો છો?`)) {
+        finishExam();
+    }
+}
+
+function finishExam() {
+    clearInterval(timerInterval);
+    document.getElementById("exam-screen").style.display = "none";
+    document.getElementById("result-screen").style.display = "block";
+
+    let correct = 0, wrong = 0, skip = 0;
+    const reviewList = document.getElementById("review-list");
+    reviewList.innerHTML = "";
+
+    questions.forEach((item, idx) => {
+        const uAns = userAnswers[idx];
+        const card = document.createElement("div");
+        card.className = "review-card";
+
+        let statusHTML = "";
+        if (uAns === null) {
+            skip++;
+            statusHTML = `<span style="color:#64748b; font-weight:700;">⚪ છોડેલ પ્રશ્ન</span> | સાચો જવાબ: <strong style="color:var(--correct);">(${letters[item.ans]}) ${item.opts[item.ans]}</strong>`;
+        } else if (uAns === item.ans) {
+            correct++;
+            card.classList.add("r-correct");
+            statusHTML = `<span style="color:var(--correct); font-weight:700;">✔ સાચો જવાબ: (${letters[uAns]}) ${item.opts[uAns]}</span>`;
+        } else {
+            wrong++;
+            card.classList.add("r-wrong");
+            statusHTML = `<span style="color:var(--wrong); font-weight:700;">✘ તમારો જવાબ: (${letters[uAns]}) ${item.opts[uAns]}</span> | સાચો જવાબ: <strong style="color:var(--correct);">(${letters[item.ans]}) ${item.opts[item.ans]}</strong>`;
+        }
+
+        card.innerHTML = `
+            <div style="font-weight:700; margin-bottom:6px;">${item.q}</div>
+            <div style="font-size:0.92rem;">${statusHTML}</div>
+        `;
+        reviewList.appendChild(card);
+    });
+
+    document.getElementById("res-correct").textContent = correct;
+    document.getElementById("res-wrong").textContent = wrong;
+    document.getElementById("res-skip").textContent = skip;
+    document.getElementById("res-score").textContent = `${correct} / 150`;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
+</body>
+</html>
