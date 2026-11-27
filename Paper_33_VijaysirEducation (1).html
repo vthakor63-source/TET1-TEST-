@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VijaysirEducation - TET 1 / 2 Exam 2027 - Paper No. 33 (75 MCQs)</title>
+<style>
+  :root {
+    --primary: #1a237e;
+    --primary-light: #3949ab;
+    --accent: #ff6f00;
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --success: #16a34a;
+    --success-bg: #dcfce7;
+    --danger: #dc2626;
+    --danger-bg: #fee2e2;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', 'Noto Sans Gujarati', sans-serif; }
+  body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  /* Header with VijaysirEducation Logo & Title */
+  .brand-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #1d4ed8 100%);
+    color: #fff;
+    padding: 18px 24px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .logo-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+  }
+  .title-block h1 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #ffffff;
+    line-height: 1.25;
+  }
+  .title-block h1 span {
+    color: #fbbf24;
+  }
+  .title-block .subtitle {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .creator-badge {
+    display: inline-block;
+    background: rgba(251, 191, 36, 0.18);
+    border: 1px solid #fbbf24;
+    color: #fde68a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-top: 4px;
+  }
+
+  .timer-box {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 16px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 135px;
+  }
+  .timer-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: #cbd5e1; }
+  .timer-val { font-size: 1.35rem; font-weight: 800; color: #fbbf24; font-variant-numeric: tabular-nums; }
+
+  /* Mode & Controls Bar */
+  .controls-bar {
+    max-width: 1200px;
+    margin: 16px auto 0;
+    padding: 0 16px;
+  }
+  .controls-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .mode-switch {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: #f8fafc;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .mode-btn.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+  .stats-pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .pill {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1e40af;
+  }
+  .pill.green { background: var(--success-bg); color: var(--success); }
+  .pill.red { background: var(--danger-bg); color: var(--danger); }
+
+  /* Main Layout */
+  .main-grid {
+    max-width: 1200px;
+    margin: 16px auto 40px;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    gap: 18px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .main-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Question Card */
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+  }
+  .q-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .q-num-badge {
+    background: #e0e7ff;
+    color: var(--primary);
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+  }
+  .q-marks {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .q-text {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 18px;
+  }
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .opt-btn {
+    text-align: left;
+    padding: 13px 16px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .opt-btn:hover:not(:disabled) {
+    border-color: var(--primary-light);
+    background: #f8fafc;
+  }
+  .opt-btn.selected {
+    border-color: var(--primary);
+    background: #eef2ff;
+    font-weight: 700;
+  }
+  .opt-btn.correct {
+    border-color: var(--success) !important;
+    background: var(--success-bg) !important;
+    color: #14532d !important;
+    font-weight: 700;
+  }
+  .opt-btn.wrong {
+    border-color: var(--danger) !important;
+    background: var(--danger-bg) !important;
+    color: #7f1d1d !important;
+    font-weight: 700;
+  }
+  .feedback-msg {
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.94rem;
+    display: none;
+  }
+  .feedback-msg.show { display: block; }
+  .feedback-msg.ok { background: var(--success-bg); color: var(--success); }
+  .feedback-msg.no { background: var(--danger-bg); color: var(--danger); }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 10px 18px;
+    border-radius: 9px;
+    border: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: 0.18s;
+  }
+  .btn-secondary { background: #e2e8f0; color: #1e293b; }
+  .btn-secondary:hover { background: #cbd5e1; }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-light); }
+  .btn-submit { background: var(--success); color: #fff; }
+  .btn-submit:hover { background: #15803d; }
+  .btn-clear { background: #fff1f2; color: var(--danger); border: 1px solid #fecdd3; }
+
+  /* Palette Sidebar */
+  .sidebar-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+  }
+  .sidebar-title {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    max-height: 390px;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+  .p-btn {
+    padding: 7px 0;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: #f8fafc;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .p-btn.current { outline: 2.5px solid var(--accent); }
+  .p-btn.answered { background: #dbeafe; border-color: #93c5fd; color: #1e3a8a; }
+  .p-btn.p-correct { background: var(--success); color: #fff; border-color: var(--success); }
+  .p-btn.p-wrong { background: var(--danger); color: #fff; border-color: var(--danger); }
+
+  .legend {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+  /* Result Scorecard */
+  .result-panel {
+    display: none;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 16px;
+  }
+  .result-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 26px;
+    border: 2px solid var(--primary);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+  .result-card h2 { color: var(--primary); font-size: 1.6rem; margin-bottom: 6px; }
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .score-box {
+    padding: 14px;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+  }
+  .score-box .num { font-size: 1.6rem; font-weight: 800; }
+  .score-box .lbl { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+
+  .review-list {
+    margin-top: 24px;
+    text-align: left;
+  }
+  .rev-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--muted);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .rev-item.r-ok { border-left-color: var(--success); }
+  .rev-item.r-no { border-left-color: var(--danger); }
+  .rev-q { font-weight: 700; margin-bottom: 6px; }
+  .rev-ans { font-size: 0.9rem; }
+
+  footer {
+    text-align: center;
+    padding: 18px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    border-top: 1px solid var(--border);
+    background: #fff;
+  }
+</style>
+</head>
+<body>
+
+<header class="brand-header">
+  <div class="header-inner">
+    <div class="logo-title-wrap">
+      <!-- VijaysirEducation Custom SVG Logo -->
+      <svg class="brand-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="veGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fbbf24"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="47" fill="#0f172a" stroke="url(#veGrad)" stroke-width="4"/>
+        <!-- Graduation Cap -->
+        <polygon points="50,18 82,31 50,44 18,31" fill="url(#veGrad)"/>
+        <path d="M32,37 L32,48 C32,53 68,53 68,48 L68,37" fill="none" stroke="#fde68a" stroke-width="3"/>
+        <line x1="78" y1="33" x2="78" y2="49" stroke="#fbbf24" stroke-width="2.5"/>
+        <!-- VE Monogram -->
+        <text x="50" y="75" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-weight="900" font-size="25" fill="#ffffff" letter-spacing="1">VE</text>
+        <text x="50" y="88" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="8.5" fill="#fbbf24" letter-spacing="0.8">VIJAYSIR EDU</text>
+      </svg>
+
+      <div class="title-block">
+        <h1><span>VijaysirEducation</span> — TET 1 / 2 Exam 2027</h1>
+        <div class="subtitle">પ્રશ્નપત્ર - 33 (Paper No. 33) | કુલ પ્રશ્નો: 75 | કુલ ગુણ: 75</div>
+        <span class="creator-badge">Created By VijaysirEducation</span>
+      </div>
+    </div>
+
+    <div class="timer-box">
+      <div class="timer-label">બાકી સમય (Time Left)</div>
+      <div class="timer-val" id="timer">60:00</div>
+    </div>
+  </div>
+</header>
+
+<div class="controls-bar">
+  <div class="controls-card">
+    <div class="mode-switch">
+      <button class="mode-btn active" id="btnPractice" onclick="setMode('practice')">⚡ Instant Practice Mode</button>
+      <button class="mode-btn" id="btnExam" onclick="setMode('exam')">📝 Exam Test Mode</button>
+    </div>
+    <div class="stats-pills">
+      <span class="pill" id="statAttempted">Attempted: 0 / 75</span>
+      <span class="pill green" id="statCorrect">Correct: 0</span>
+      <span class="pill red" id="statWrong">Wrong: 0</span>
+    </div>
+  </div>
+</div>
+
+<div class="result-panel" id="resultPanel">
+  <div class="result-card">
+    <h2>🏆 VijaysirEducation — Paper No. 33 Result Scorecard</h2>
+    <p style="color:var(--muted); font-weight:600;">TET 1 / 2 Exam 2027 | પ્રશ્નપત્ર - 33 (75 MCQs)</p>
+    <div class="score-grid">
+      <div class="score-box"><div class="num" style="color:var(--primary);" id="resTotal">75</div><div class="lbl">કુલ પ્રશ્નો</div></div>
+      <div class="score-box"><div class="num" style="color:#0284c7;" id="resAtt">0</div><div class="lbl">પ્રયત્ન કરેલ</div></div>
+      <div class="score-box"><div class="num" style="color:var(--success);" id="resRight">0</div><div class="lbl">સાચા જવાબ</div></div>
+      <div class="score-box"><div class="num" style="color:var(--danger);" id="resWrong">0</div><div class="lbl">ખોટા જવાબ</div></div>
+      <div class="score-box"><div class="num" style="color:var(--accent);" id="resPct">0%</div><div class="lbl">ટકાવારી (%)</div></div>
+    </div>
+    <button class="btn btn-primary" onclick="restartQuiz()">🔄 ફરીથી ટેસ્ટ આપો (Restart Quiz)</button>
+    <div class="review-list" id="reviewList"></div>
+  </div>
+</div>
+
+<div class="main-grid" id="quizArea">
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num-badge" id="qCounter">પ્રશ્ન 1 / 75</span>
+      <span class="q-marks">ગુણ: +1 | નેગેટિવ: 0</span>
+    </div>
+    <div class="q-text" id="qText">Loading...</div>
+    <div class="options-list" id="optionsContainer"></div>
+    <div class="feedback-msg" id="feedbackMsg"></div>
+
+    <div class="nav-buttons">
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-secondary" id="prevBtn" onclick="prevQ()">⬅ પાછળ (Prev)</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="nextQ()">આગળ (Next) ➡</button>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-clear" onclick="clearResponse()">Clear</button>
+        <button class="btn btn-submit" onclick="submitQuiz()">✅ Submit Test</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">
+      <span>પ્રશ્ન પેલેટ (1 - 75)</span>
+      <span style="font-size:0.78rem; color:var(--muted);">Click to Jump</span>
+    </div>
+    <div class="palette-grid" id="paletteGrid"></div>
+    <div class="legend">
+      <span><i class="dot" style="background:#f8fafc; border:1px solid #cbd5e1;"></i> બાકી (Unvisited)</span>
+      <span><i class="dot" style="background:#dbeafe; border:1px solid #93c5fd;"></i> પસંદ કરેલ</span>
+      <span><i class="dot" style="background:#16a34a;"></i> સાચો જવાબ</span>
+      <span><i class="dot" style="background:#dc2626;"></i> ખોટો જવાબ</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>VijaysirEducation</strong> • TET 1 / 2 Exam 2027 Test Series • Paper No. 33 (75 MCQs) • Created By VijaysirEducation
+</footer>
+
+<script>
+const questions = [{"q": "1. More than 15 years have ________ but I never forget the time when I first met him.", "options": ["(A) gone out", "(B) gone on", "(C) gone up", "(D) gone by"], "ans": 3}, {"q": "2. ત્રણ ભગ્ન જૈન મંદિરો ગુજરાતના કયા વનમાં આવેલા છે?", "options": ["(A) ગીરના જંગલોમાં", "(B) પોળોના જંગલોમાં", "(C) ડાંગના જંગલોમાં", "(D) શૂલપાણેશ્વરના જંગલોમાં"], "ans": 1}, {"q": "3. મૂલ્યાંકન એ કેવી પ્રક્રિયા છે?", "options": ["(A) વ્યાપક", "(B) અસતત ચાલતી", "(C) સીમિત", "(D) એક પણ નહીં"], "ans": 0}, {"q": "4. બિરસા મુંડા હોકી સ્ટેડિયમનું લોકાર્પણ કયા રાજ્યમાં કરવામાં આવ્યું?", "options": ["(A) કર્ણાટક", "(B) તેલંગાણા", "(C) ઓડિશા", "(D) ગુજરાત"], "ans": 2}, {"q": "5. 27મી વાસેનાર અરેન્જમેન્ટ-2023ની વાર્ષિક બેઠકની યજમાની કયો દેશ કરશે?", "options": ["(A) આયર્લેન્ડ", "(B) ભારત", "(C) હંગેરી", "(D) જાપાન"], "ans": 1}, {"q": "6. નીચેનામાંથી કઈ અધ્યાપન માટેની પ્રયુક્તિ નથી?", "options": ["(A) ગાન પ્રયુક્તિ", "(B) પૂરક વાચન પ્રયુક્તિ", "(C) નાટ્યીકરણ પ્રયુક્તિ", "(D) કથન-ચર્ચા"], "ans": 1}, {"q": "7. નબળો શિક્ષક માત્ર માહિતી આપે છે. મધ્યમ શિક્ષક માહિતીની સમજ આપે છે. સારો શિક્ષક વિદ્યાર્થીઓને શીખતા કરે છે. આ વિધાન અંગે તમે શું માનો છો?", "options": ["(A) સંપૂર્ણ સહમત", "(B) અંશતઃ સહમત", "(C) અસંમત", "(D) કશું ન કહી શકાય"], "ans": 0}, {"q": "8. વસંતોત્સવ કયા માસ દરમિયાન ઉજવવામાં આવે છે?", "options": ["(A) ડિસેમ્બર", "(B) જાન્યુઆરી", "(C) ફેબ્રુઆરી", "(D) ઓક્ટોબર"], "ans": 2}, {"q": "9. ________ Gold is ________ precious metal.", "options": ["(A) no article, a", "(B) a, a", "(C) an, the", "(D) the, an"], "ans": 0}, {"q": "10. સિંધુ સંસ્કૃતિના લોકો કઈ ધાતુના ઉપયોગથી અજાણ હતા?", "options": ["(A) તાંબુ", "(B) લોખંડ", "(C) ચાંદી", "(D) કાંસુ"], "ans": 1}, {"q": "11. DNA ના પરીક્ષણ માટે થતો \"PCR\" ટેસ્ટનો મતલબ જણાવો.", "options": ["(A) પોલીમરાઈઝ ચેઈન રિએક્શન", "(B) પેપ્સીન કન્ઝર્વ રેટ", "(C) પ્રોટીન ક્લોનીંગ રેટ", "(D) પેપ્ટાઈટ કોનિક રિએક્શન"], "ans": 0}, {"q": "12. બેન્જામિન બ્લૂમ ક્યાંના વતની હતા?", "options": ["(A) ઈંગ્લેન્ડ", "(B) જર્મની", "(C) અમેરિકા", "(D) સ્વિટ્ઝર્લેન્ડ"], "ans": 2}, {"q": "13. વર્ષ 2011ની વસ્તી ગણતરી પ્રમાણે ગુજરાતનો સાક્ષરતા દર કેટલા ટકા છે?", "options": ["(A) 74%", "(B) 76%", "(C) 78%", "(D) 80%"], "ans": 2}, {"q": "14. નીચેનામાંથી કયા અનુચ્છેદમાં જાહેર રોજગારીની બાબતમાં તકની સમાનતા વિશે જોગવાઈ કરેલી છે?", "options": ["(A) અનુચ્છેદ-14", "(B) અનુચ્છેદ-15", "(C) અનુચ્છેદ-16", "(D) અનુચ્છેદ-17"], "ans": 2}, {"q": "15. Shruti ran fast ________ she missed the train.", "options": ["(A) but", "(B) as", "(C) and", "(D) therefore"], "ans": 0}, {"q": "16. વિજયનગરના કયા શાસકના કાર્યકાળને તેલુગુ સાહિત્યનો સુવર્ણકાળ કહેવાય છે?", "options": ["(A) નરસિંહ સાલુવ", "(B) વિરુપાક્ષ બીજો", "(C) હરિહર રાય", "(D) કૃષ્ણદેવરાય"], "ans": 3}, {"q": "17. અંતર્ગોળ અરીસામાં વસ્તુનું સ્થાન વક્રતા કેન્દ્ર (C) થી દૂર હોય તો પ્રતિબિંબનું સ્થાન અને માપ જણાવો.", "options": ["(A) વક્રતા કેન્દ્ર અને મુખ્ય કેન્દ્રની વચ્ચે વસ્તુ કરતાં મોટું", "(B) વક્રતા કેન્દ્ર પર અને વસ્તુ જેવડું", "(C) વક્રતા કેન્દ્ર અને મુખ્ય કેન્દ્ર વચ્ચે વસ્તુ કરતાં નાનું", "(D) વક્રતા કેન્દ્ર અને ધ્રુવની વચ્ચે વસ્તુ કરતાં નાનું"], "ans": 2}, {"q": "18. નીચેનામાંથી સારા ઉદાહરણનું લક્ષણ કયું છે?", "options": ["(A) અસંગત ઉદાહરણ", "(B) જટિલ ઉદાહરણ", "(C) રસપ્રદ ઉદાહરણ", "(D) આપેલમાંથી એકપણ નહીં"], "ans": 2}, {"q": "19. નીચેનામાંથી કઈ જોડ ખોટી છે?", "options": ["(A) અંબાજી મંદિર - સાબરકાંઠા", "(B) મોઢેરાનું સૂર્ય મંદિર - મહેસાણા", "(C) અક્ષરધામ મંદિર - ગાંધીનગર", "(D) હઠીસિંહના દેરા - અમદાવાદ"], "ans": 0}, {"q": "20. આંતરરાષ્ટ્રીય હોકીની મેચમાં સમયગાળો કેટલો હોય છે?", "options": ["(A) 60 મિનિટ", "(B) 90 મિનિટ", "(C) 120 મિનિટ", "(D) 75 મિનિટ"], "ans": 0}, {"q": "21. Identify the correct spelling.", "options": ["(A) Necessary", "(B) Necesary", "(C) Neccesary", "(D) Neccessary"], "ans": 0}, {"q": "22. તાજેતરમાં ગુજરાતના કયા મહિલા સામાજિક કાર્યકર અને ગાંધીવાદી વ્યક્તિનું નિધન થયું છે?", "options": ["(A) ઈલાબેન ભટ્ટ", "(B) દિવાળીબેન ભીલ", "(C) ઈલાબેન જોશી", "(D) સરોજ પાઠક"], "ans": 0}, {"q": "23. નીચેનામાંથી કયો રોગ વિટામિન-C ની ઊણપથી થાય છે?", "options": ["(A) રતાંધણાપણું", "(B) બેરીબેરી", "(C) પેશીય રોગો", "(D) સ્કર્વી"], "ans": 3}, {"q": "24. નીચેનામાંથી કઈ સમસ્યા વ્યક્તિ અભ્યાસને લગતી સમસ્યા છે?", "options": ["(A) બીજા વિદ્યાર્થીઓને ધમકી આપવી", "(B) શાળામાં દરરોજ મોડા આવવું", "(C) વારંવાર જૂઠું બોલવું", "(D) ઉપરના તમામ"], "ans": 3}, {"q": "25. G, H, J, M, ?, V", "options": ["(A) Q", "(B) T", "(C) O", "(D) R"], "ans": 0}, {"q": "26. કયા વિકલ્પની મદદથી Recycle Bin માં રહેલી ફાઈલનું Backup મેળવી શકાય છે?", "options": ["(A) Backup", "(B) Restore", "(C) Resend", "(D) Sent"], "ans": 1}, {"q": "27. ઈલાબેન ભટ્ટે નીચેનામાંથી કયા પુસ્તકની રચના કરી છે?", "options": ["(A) શ્રમ શક્તિ", "(B) ગુજરાતની નારી", "(C) દૂસરી આઝાદી", "(D) આપેલ તમામ"], "ans": 3}, {"q": "28. કયા બૌદ્ધ ગ્રંથમાં અશોકના રાજ્યકાળ દરમિયાન અંદાજે 84 હજાર સ્તૂપોના નિર્માણની માહિતી પ્રાપ્ત થાય છે?", "options": ["(A) દિવ્યવદાન", "(B) અંગુત્તર નિકાય", "(C) મજ્જિમનિકાય", "(D) ત્રિપિટક"], "ans": 0}, {"q": "29. ગુજરાતમાં મધ્યાહન ભોજન યોજના ક્યારથી લાગુ કરવામાં આવી છે?", "options": ["(A) વર્ષ 1980", "(B) વર્ષ 1984", "(C) વર્ષ 1990", "(D) વર્ષ 1994"], "ans": 1}, {"q": "30. નીચે આપેલ સંખ્યાશ્રેણીમાં બંધબેસતી ન હોય તે સંખ્યા જણાવો : 2, 5, 10, 50, 500, 5000", "options": ["(A) 5000", "(B) 5", "(C) 10", "(D) 50"], "ans": 0}, {"q": "31. 'પિનાકપાણિ' શબ્દ કોના માટે વપરાય છે?", "options": ["(A) દશરથ", "(B) અર્જુન", "(C) શિવ", "(D) વિશ્વકર્મા"], "ans": 2}, {"q": "32. તાજેતરમાં આયોજિત 'પરીક્ષા પે ચર્ચા' કાર્યક્રમમાં ગુજરાતનું પ્રતિનિધિત્વ કોણે કર્યું હતું?", "options": ["(A) યુગ્મા લબાના", "(B) દક્ષ પટેલ", "(C) (A) અને (B) બંને", "(D) એકપણ નહીં"], "ans": 2}, {"q": "33. જૈન ચિત્રકળા માટે જાણીતા સિત્તનવાસલ ગુફાના ચિત્રો કયા રાજ્યમાં આવેલા છે?", "options": ["(A) આંધ્રપ્રદેશ", "(B) તેલંગાણા", "(C) તમિલનાડુ", "(D) કર્ણાટક"], "ans": 2}, {"q": "34. ક્રિયાત્મક સંશોધનની ઉત્કલ્પના કયા સ્વરૂપની હોય છે?", "options": ["(A) જો અને તો... સ્વરૂપની", "(B) વ્યવહારુ", "(C) શૂન્ય", "(D) સૈદ્ધાંતિક"], "ans": 0}, {"q": "35. શૈક્ષણિક હેતુઓના ભાવાત્મક ક્ષેત્ર સાથે નીચેનામાંથી કયું અસંબંધિત છે?", "options": ["(A) પ્રતિક્રિયા", "(B) ગ્રહણ", "(C) વ્યવસ્થાપન", "(D) નિયંત્રણ"], "ans": 3}, {"q": "36. 'યજ્ઞના લાકડાં'ને કયા નામથી ઓળખવામાં આવે છે?", "options": ["(A) કાષ્ટ", "(B) સમિધ", "(C) કંઠ", "(D) કાષ્ઠ"], "ans": 1}, {"q": "37. Arrange the words in the alphabetical order and pick the one that comes second last : Bright, Bandit, Brook, Baffle", "options": ["(A) Bright", "(B) Bandit", "(C) Brook", "(D) Baffle"], "ans": 0}, {"q": "38. ચંદ્રગુપ્ત મૌર્યના સમયમાં સૌરાષ્ટ્રના સૂબા અથવા રાજ્યપાલ કોણ હતા?", "options": ["(A) તુષાષ્ફ", "(B) સુવિશાખ", "(C) પર્ણદત્ત", "(D) પુષ્યગુપ્ત વૈશ્ય"], "ans": 3}, {"q": "39. મૂલ્યાંકનના ત્રણ ક્ષેત્રો કયા શિક્ષણશાસ્ત્રીએ દર્શાવ્યા છે?", "options": ["(A) સ્કિનર", "(B) કિલપેટ્રીક્સ", "(C) બેન્જામિન એસ. બ્લૂમ", "(D) જે. બી. વોટ્સન"], "ans": 2}, {"q": "40. ખાલી જગ્યા પૂરો : ચૈત્ર, વૈશાખ, ______, અષાઢ", "options": ["(A) ભાદરવો", "(B) શ્રાવણ", "(C) પોષ", "(D) જેઠ"], "ans": 3}, {"q": "41. ખોટી જોડણી શોધો.", "options": ["(A) કીડીયારું", "(B) નિરીક્ષક", "(C) મૃણાલિની", "(D) મોરથૂથુ"], "ans": 0}, {"q": "42. 'નયન' શબ્દની સંધિ છોડતા.....", "options": ["(A) ન + અયન", "(B) ને + અન", "(C) નૂ + અયન", "(D) ને + અયન"], "ans": 1}, {"q": "43. CRR (Cash Reserve Ratio) માં વધારો કરવામાં આવે ત્યારે બજારમાં નાણાંના પુરવઠા પર શું અસર થાય છે?", "options": ["(A) નાણાંનો પુરવઠો સ્થિર રહે છે", "(B) નાણાંનો પુરવઠો વધે છે", "(C) નાણાંનો પુરવઠો ઘટે છે", "(D) ઉપરમાંથી કોઈ નહિ"], "ans": 2}, {"q": "44. અમૂર્ત વિષયવસ્તુને દ્રષ્ટાંતો દ્વારા રજૂ કરવાના કૌશલ્યને શું કહે છે?", "options": ["(A) સ્પષ્ટીકરણ", "(B) વર્ગવ્યવસ્થા", "(C) પાઠગતિ", "(D) ઉદાહરણ"], "ans": 3}, {"q": "45. 5¼ ના વિરોધીનો વ્યસ્ત કઈ સંખ્યા છે?", "options": ["(A) 21/4", "(B) -21/4", "(C) 4/21", "(D) -4/21"], "ans": 3}, {"q": "46. નીચે આપેલ શબ્દોમાંથી કયો શબ્દ 'વલય' શબ્દનો સમાનાર્થી નથી તે જણાવો.", "options": ["(A) તોરણ", "(B) પ્રલય", "(C) કપટ", "(D) કંકણ"], "ans": 1}, {"q": "47. The bag is ________ heavy that I can ________ carry it.", "options": ["(A) so, hardly", "(B) very, easily", "(C) too, not", "(D) extremely, seldom"], "ans": 0}, {"q": "48. શબ્દકોશના ક્રમ મુજબ સાચો ક્રમ કયો છે?", "options": ["(A) ગલ્લો, ગર્જન, ગંધ, ગંધર્વ", "(B) ગંધર્વ, ગંધ, ગર્જન, ગલ્લો", "(C) ગર્જન, ગલ્લો, ગંધ, ગંધર્વ", "(D) ગંધ, ગર્જન, ગલ્લો, ગંધર્વ"], "ans": 2}, {"q": "49. નીચેનામાંથી કોના અધ્યક્ષની ચૂંટણી પરોક્ષ રીતે થાય છે?", "options": ["(A) તાલુકા પંચાયત", "(B) જિલ્લા પંચાયત", "(C) ગ્રામ પંચાયત", "(D) (A) અને (B) બંને"], "ans": 3}, {"q": "50. વ્યક્તિ અભ્યાસમાં કયું સોપાન મહત્વ ધરાવે છે?", "options": ["(A) માહિતીનું એકત્રીકરણ", "(B) વિશ્લેષણ", "(C) પૃથક્કરણ", "(D) ઉપરના તમામ"], "ans": 3}, {"q": "51. નીચેનામાંના નંબરોના સમૂહની સરેરાશ કેટલી થશે? 118, 186, 138, 204, 175, 229", "options": ["(A) 156", "(B) 175", "(C) 148", "(D) 152"], "ans": 1}, {"q": "52. 'વાટકીનું શિરામણ હોવું' રૂઢિપ્રયોગનો અર્થ શું થાય?", "options": ["(A) પેટ નાનું હોવું", "(B) ઓછી આવક હોવી", "(C) ભૂખ ન લાગવી", "(D) ભોજન ઓછું લેવું"], "ans": 1}, {"q": "53. Choose the correct sentence.", "options": ["(A) He does not attends the class regularly.", "(B) He do not attend the class regularly.", "(C) He did not attends the class regularly.", "(D) He does not attend the class regularly."], "ans": 3}, {"q": "54. 'વંઠી જવું' એટલે શું?", "options": ["(A) વંડીમાંથી જવું", "(B) ભાગી જવું", "(C) હાથથી જવું", "(D) દુઃખમાં હોવું"], "ans": 2}, {"q": "55. તાલુકા પંચાયતની પ્રથમ બેઠકની તારીખ નક્કી કરવાની સત્તા કોની પાસે હોય છે?", "options": ["(A) તાલુકા વિકાસ અધિકારી", "(B) જિલ્લા વિકાસ અધિકારી", "(C) ગ્રામ વિકાસ અધિકારી", "(D) સરપંચ"], "ans": 1}, {"q": "56. વિદ્યાર્થીઓમાં સાહિત્ય વાંચનની ટેવ વિકસે તે માટે શિક્ષકે કઈ પ્રવૃત્તિનો ઉપયોગ કરવો જોઈએ?", "options": ["(A) ગૃહકાર્ય", "(B) કઠપૂતળી વિદ્યા", "(C) વાર્તા કથન", "(D) પૂરક વાંચન"], "ans": 3}, {"q": "57. ક્રિયાત્મક સંશોધનના પરિણામો કોને ઉપયોગી છે?", "options": ["(A) વિશાળ સમૂહને", "(B) જિલ્લાની તમામ શાળાઓને", "(C) સંશોધક શિક્ષકને", "(D) કોઈ એક શાળા કે વર્ગને"], "ans": 3}, {"q": "58. વાક્યમાં દર્શાવેલી એકની એક વિગત નીચેની લીટીમાં આવતી હોય ત્યારે કયું ચિહ્ન વપરાય છે?", "options": ["(A) તિર્યક રેખા", "(B) કાકપદ ચિહ્ન", "(C) લોપચિહ્ન", "(D) એજન ચિહ્ન"], "ans": 3}, {"q": "59. A grand festival ________ in the next January.", "options": ["(A) will celebrate", "(B) celebrates", "(C) is celebrated", "(D) will be celebrated"], "ans": 3}, {"q": "60. The showroom ________ now.", "options": ["(A) is being opened", "(B) is opened", "(C) is opening", "(D) opens"], "ans": 0}, {"q": "61. નીચેનામાંથી કયા જિલ્લામાં સાક્ષરતા દર સૌથી ઓછો છે?", "options": ["(A) નવસારી", "(B) ડાંગ", "(C) દાહોદ", "(D) કચ્છ"], "ans": 2}, {"q": "62. કોઈ પદાર્થ, ઘટના કે અવલોકનને કોઈ ચોક્કસ સંખ્યા સાથે સાંકળવું એટલે...?", "options": ["(A) અવલોકન", "(B) માપન", "(C) નિરીક્ષણ", "(D) સરખામણી"], "ans": 1}, {"q": "63. કાવ્ય શિક્ષણ માટેની ઉત્તમ પ્રયુક્તિ કઈ છે?", "options": ["(A) ગાન પ્રયુક્તિ", "(B) કથન–ચર્ચા પ્રયુક્તિ", "(C) કઠપૂતળી પ્રયુક્તિ", "(D) ચર્ચા પ્રયુક્તિ"], "ans": 0}, {"q": "64. ________ has he been waiting for?", "options": ["(A) Where", "(B) How long", "(C) When", "(D) What"], "ans": 1}, {"q": "65. Choose the correct antonym for the word given below : Languid", "options": ["(A) Lethargic", "(B) Indolent", "(C) Energetic", "(D) Sluggish"], "ans": 2}, {"q": "66. ગુજરાતમાં આવેલી જેસોરની ટેકરીઓ કઈ પર્વતમાળાનો ભાગ છે?", "options": ["(A) વિંધ્ય", "(B) અરવલ્લી", "(C) સાતપુડા", "(D) પશ્ચિમઘાટ"], "ans": 1}, {"q": "67. કા.પા. કાર્યમાં રંગીન ચોકનો ઉપયોગ......", "options": ["(A) જરૂરી નથી. સફેદ ચોકથી પણ લખી શકાય.", "(B) જરૂરી નથી. કારણ કે દરરોજ રંગીન ચોક લઈને જવું મુશ્કેલ છે.", "(C) જરૂરી છે. તેથી કલા દ્રષ્ટિ ખીલવી શકાય.", "(D) જરૂરી છે. વિશિષ્ટ બાબતો તરફ ધ્યાન દોરવા તે ખૂબ ઉપયોગી છે."], "ans": 3}, {"q": "68. વિદ્યાર્થીઓને કોઈ એક એકમ શીખવવાની ઉત્તમ પદ્ધતિ કઈ?", "options": ["(A) ઉદાહરણો આપી અસરકારક કથન દ્વારા શીખવવું.", "(B) ચાર્ટ, ચિત્ર, નકશો જેવાં સાધનોની મદદથી શીખવવું.", "(C) વિડિયો ફિલ્મની મદદથી શીખવવું.", "(D) પ્રત્યક્ષ અનુભવો પૂરા પાડી શીખવવું."], "ans": 3}, {"q": "69. Three into Two ________ Six.", "options": ["(A) result", "(B) is resulting", "(C) results", "(D) resulted"], "ans": 2}, {"q": "70. આપેલ વાક્યમાંથી વિશેષણ શોધો : 'શબરીએ રામને ચાખેલા બોર આપ્યાં.'", "options": ["(A) શબરીએ", "(B) રામને", "(C) ચાખેલા", "(D) બોર"], "ans": 2}, {"q": "71. મૂલ્યાંકન એ કેવી પ્રક્રિયા છે?", "options": ["(A) સંખ્યાત્મક", "(B) ગુણાત્મક", "(C) વર્ણનાત્મક", "(D) આપેલ તમામ"], "ans": 3}, {"q": "72. નીચેનામાંથી કયું સાપેક્ષ માપનું ઉદાહરણ છે?", "options": ["(A) પલંગનું માપન", "(B) ગરમીનું માપન", "(C) વરસાદનું માપન", "(D) વિદ્યાર્થીના રસનું માપન"], "ans": 3}, {"q": "73. કાવ્યમાં વારંવાર આવતી પંક્તિને શું કહે છે?", "options": ["(A) પુનરાવર્તી કડી", "(B) પંક્તિ", "(C) મુખ્ય કડી", "(D) ધ્રુવ પંક્તિ"], "ans": 3}, {"q": "74. Tennis is a very exciting sport. (Turn into exclamatory)", "options": ["(A) How exciting sport is tennis !", "(B) How exciting tennis is sport !", "(C) What an exciting sport tennis is!", "(D) What an exciting sport is tennis !"], "ans": 2}, {"q": "75. સાચી જોડણી શોધો.", "options": ["(A) નિકાસ", "(B) નિકાશ", "(C) A & B બંને", "(D) એક પણ નહીં"], "ans": 2}];
+
+let currentIdx = 0;
+let userAnswers = new Array(questions.length).fill(null);
+let mode = 'practice'; // 'practice' or 'exam'
+let submitted = false;
+let timeLeft = 60 * 60; // 60 minutes
+
+function startTimer() {
+  setInterval(() => {
+    if (submitted) return;
+    if (timeLeft <= 0) {
+      submitQuiz();
+      return;
+    }
+    timeLeft--;
+    const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+    const s = String(timeLeft % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = `${m}:${s}`;
+  }, 1000);
+}
+
+function setMode(newMode) {
+  if (submitted) return;
+  mode = newMode;
+  document.getElementById('btnPractice').classList.toggle('active', mode === 'practice');
+  document.getElementById('btnExam').classList.toggle('active', mode === 'exam');
+  renderQuestion();
+  renderPalette();
+  updateStats();
+}
+
+function renderQuestion() {
+  const item = questions[currentIdx];
+  document.getElementById('qCounter').textContent = `પ્રશ્ન ${currentIdx + 1} / ${questions.length}`;
+  document.getElementById('qText').textContent = item.q;
+
+  const optContainer = document.getElementById('optionsContainer');
+  optContainer.innerHTML = '';
+
+  const fb = document.getElementById('feedbackMsg');
+  fb.className = 'feedback-msg';
+  fb.textContent = '';
+
+  const chosen = userAnswers[currentIdx];
+
+  item.options.forEach((optText, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.textContent = optText;
+
+    if (mode === 'practice' && chosen !== null) {
+      btn.disabled = true;
+      if (idx === item.ans) {
+        btn.classList.add('correct');
+      } else if (idx === chosen && chosen !== item.ans) {
+        btn.classList.add('wrong');
+      }
+    } else if (mode === 'exam') {
+      if (chosen === idx) btn.classList.add('selected');
+    }
+
+    btn.onclick = () => selectOption(idx);
+    optContainer.appendChild(btn);
+  });
+
+  if (mode === 'practice' && chosen !== null) {
+    if (chosen === item.ans) {
+      fb.className = 'feedback-msg show ok';
+      fb.textContent = '✅ સાચો જવાબ! (Correct Answer)';
+    } else {
+      fb.className = 'feedback-msg show no';
+      fb.textContent = `❌ ખોટો જવાબ! સાચો જવાબ: ${item.options[item.ans]}`;
+    }
+  }
+
+  document.getElementById('prevBtn').disabled = currentIdx === 0;
+  document.getElementById('nextBtn').textContent = currentIdx === questions.length - 1 ? 'Finish ➡' : 'આગળ (Next) ➡';
+}
+
+function selectOption(optIdx) {
+  if (submitted) return;
+  if (mode === 'practice' && userAnswers[currentIdx] !== null) return;
+  userAnswers[currentIdx] = optIdx;
+  renderQuestion();
+  renderPalette();
+  updateStats();
+}
+
+function clearResponse() {
+  if (submitted) return;
+  userAnswers[currentIdx] = null;
+  renderQuestion();
+  renderPalette();
+  updateStats();
+}
+
+function prevQ() {
+  if (currentIdx > 0) {
+    currentIdx--;
+    renderQuestion();
+    renderPalette();
+  }
+}
+
+function nextQ() {
+  if (currentIdx < questions.length - 1) {
+    currentIdx++;
+    renderQuestion();
+    renderPalette();
+  } else {
+    submitQuiz();
+  }
+}
+
+function jumpTo(idx) {
+  currentIdx = idx;
+  renderQuestion();
+  renderPalette();
+}
+
+function renderPalette() {
+  const grid = document.getElementById('paletteGrid');
+  grid.innerHTML = '';
+  questions.forEach((q, idx) => {
+    const b = document.createElement('button');
+    b.className = 'p-btn';
+    b.textContent = idx + 1;
+    if (idx === currentIdx) b.classList.add('current');
+
+    const ans = userAnswers[idx];
+    if (ans !== null) {
+      if (mode === 'practice' || submitted) {
+        b.classList.add(ans === q.ans ? 'p-correct' : 'p-wrong');
+      } else {
+        b.classList.add('answered');
+      }
+    }
+    b.onclick = () => jumpTo(idx);
+    grid.appendChild(b);
+  });
+}
+
+function updateStats() {
+  let attempted = 0, correct = 0, wrong = 0;
+  userAnswers.forEach((ans, idx) => {
+    if (ans !== null) {
+      attempted++;
+      if (ans === questions[idx].ans) correct++;
+      else wrong++;
+    }
+  });
+  document.getElementById('statAttempted').textContent = `Attempted: ${attempted} / ${questions.length}`;
+  if (mode === 'practice' || submitted) {
+    document.getElementById('statCorrect').textContent = `Correct: ${correct}`;
+    document.getElementById('statWrong').textContent = `Wrong: ${wrong}`;
+  } else {
+    document.getElementById('statCorrect').textContent = `Correct: Hidden`;
+    document.getElementById('statWrong').textContent = `Wrong: Hidden`;
+  }
+}
+
+function submitQuiz() {
+  submitted = true;
+  let attempted = 0, correct = 0, wrong = 0;
+  userAnswers.forEach((ans, idx) => {
+    if (ans !== null) {
+      attempted++;
+      if (ans === questions[idx].ans) correct++;
+      else wrong++;
+    }
+  });
+  const pct = ((correct / questions.length) * 100).toFixed(2);
+
+  document.getElementById('resAtt').textContent = attempted;
+  document.getElementById('resRight').textContent = correct;
+  document.getElementById('resWrong').textContent = wrong;
+  document.getElementById('resPct').textContent = `${pct}%`;
+
+  const rev = document.getElementById('reviewList');
+  rev.innerHTML = '<h3 style="margin-bottom:14px; color:var(--primary);">📋 તમામ 75 પ્રશ્નોનું સોલ્યુશન રિવ્યુ (Complete Answer Review)</h3>';
+
+  questions.forEach((q, idx) => {
+    const u = userAnswers[idx];
+    const isOk = u === q.ans;
+    const div = document.createElement('div');
+    div.className = 'rev-item ' + (u === null ? '' : (isOk ? 'r-ok' : 'r-no'));
+    const userText = u === null ? '<span style="color:#64748b;">જવાબ આપ્યો નથી (Unattempted)</span>' :
+      (isOk ? `<span style="color:#16a34a; font-weight:700;">${q.options[u]} ✅</span>` :
+              `<span style="color:#dc2626; font-weight:700;">${q.options[u]} ❌</span>`);
+    div.innerHTML = `
+      <div class="rev-q">${q.q}</div>
+      <div class="rev-ans">તમારો જવાબ: ${userText} &nbsp;|&nbsp; સાચો જવાબ: <strong style="color:#16a34a;">${q.options[q.ans]}</strong></div>
+    `;
+    rev.appendChild(div);
+  });
+
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('resultPanel').style.display = 'block';
+  updateStats();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restartQuiz() {
+  currentIdx = 0;
+  userAnswers = new Array(questions.length).fill(null);
+  submitted = false;
+  timeLeft = 60 * 60;
+  document.getElementById('resultPanel').style.display = 'none';
+  document.getElementById('quizArea').style.display = 'grid';
+  renderQuestion();
+  renderPalette();
+  updateStats();
+}
+
+renderQuestion();
+renderPalette();
+updateStats();
+startTimer();
+</script>
+</body>
+</html>
